@@ -18,7 +18,15 @@
 *.zip
 *.tar.gz
 *.rar
+.idea/libraries/
+.idea/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+open/mvnw.cmd
+open/open.iml
+open/.mvn/wrapper/maven-wrapper.properties
+open/HELP.md
+open/mvnw
