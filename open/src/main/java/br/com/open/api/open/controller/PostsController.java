@@ -1,12 +1,15 @@
 package br.com.open.api.open.controller;
 
+import br.com.open.api.open.DTO.CommentsDTO;
 import br.com.open.api.open.DTO.PostDTO;
+import br.com.open.api.open.client.CommentsClient;
 import br.com.open.api.open.client.PostsClient;
 import br.com.open.api.open.external.ResponseExternal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/posts")
@@ -14,6 +17,7 @@ public class PostsController {
 
     @Autowired
     PostsClient postsClient;
+
 
     @PostMapping
     public PostDTO create(
@@ -44,5 +48,6 @@ public class PostsController {
     public List<PostDTO> postsd(@PathVariable("id") long id) {
         return postsClient.getAllCountriesByUserId(id);
     }
+
 
 }

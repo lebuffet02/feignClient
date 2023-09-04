@@ -30,3 +30,5 @@ open/open.iml
 open/.mvn/wrapper/maven-wrapper.properties
 open/HELP.md
 open/mvnw
+
+eureka/.mvn/wrapper/maven-wrapper.properties

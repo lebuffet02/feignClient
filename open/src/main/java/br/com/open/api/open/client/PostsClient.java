@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-@FeignClient(name = "${spring.application.name}", url = "${posts.url}", configuration = OpenApiConfig.class)
+@FeignClient(name = "${feign}", url = "${posts.url}", configuration = OpenApiConfig.class)
 public interface PostsClient {
 
     @GetMapping
