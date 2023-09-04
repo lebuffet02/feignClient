@@ -8,22 +8,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.List;
+import java.util.Optional;
 
-@FeignClient(name = "posts-clients", url = "https://jsonplaceholder.typicode.com/posts", configuration = OpenApiConfig.class)
+
+@FeignClient(name = "${spring.application.name}", url = "${posts.url}", configuration = OpenApiConfig.class)
 public interface PostsClient {
 
     @GetMapping
-    List<PostDTO> getAllPosts();
+    Optional<List<PostDTO>> getAllPosts();
 
     @GetMapping
-    List<PostDTO> getAllCountriesByUserId(
-            @RequestParam("userId") int id);
+    List<PostDTO> getAllCountriesByUserId(@RequestParam("userId") long id);
 
     @GetMapping(path = "/{postId}")
-    PostDTO getPostByPostId(
-            @PathVariable("postId") Integer postId);
+    PostDTO getPostByPostId(@PathVariable("postId") long postId);
 
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     PostDTO create(PostDTO post);
