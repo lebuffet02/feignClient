@@ -1,6 +1,8 @@
 package br.com.open.api.open.external;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Nullable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class ResponseExternal<T> {
@@ -17,9 +19,9 @@ public class ResponseExternal<T> {
         setStatus(getFormat());
     }
 
-    public ResponseExternal(T body) {
+    public ResponseExternal(@Nullable T body) {
         setStatus(getFormat());
-        this.body = getStatusEntity(body);
+        this.body = ResponseEntity.ofNullable(body);
     }
 
     public String getStatus() {
@@ -36,10 +38,6 @@ public class ResponseExternal<T> {
 
     public void setBody(ResponseEntity<T> body) {
         this.body = body;
-    }
-
-    public ResponseEntity<T> getStatusEntity(T body) {
-        return ResponseEntity.ofNullable(body);
     }
 
     private String getFormat() {
