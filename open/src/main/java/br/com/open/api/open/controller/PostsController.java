@@ -16,7 +16,6 @@ public class PostsController {
     @Autowired
     PostsClient postsClient;
 
-
     @PostMapping
     public PostDTO create(@RequestBody PostDTO postDTO) {
         return postsClient.create(postDTO);
