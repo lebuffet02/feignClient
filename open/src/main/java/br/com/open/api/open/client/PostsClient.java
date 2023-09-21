@@ -1,7 +1,8 @@
 package br.com.open.api.open.client;
 
 import br.com.open.api.open.DTO.PostDTO;
-import br.com.open.api.open.config.OpenApiConfig;
+import br.com.open.api.open.config.OpenInitialize;
+import br.com.open.api.open.domain.Posts.Posts;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,17 +13,17 @@ import java.util.List;
 import java.util.Optional;
 
 
-@FeignClient(name = "${feign}", url = "${posts.url}", configuration = OpenApiConfig.class)
+@FeignClient(name = "posts", url = "${posts.url}", configuration = OpenInitialize.class)
 public interface PostsClient {
 
     @GetMapping
-    Optional<List<PostDTO>> getAllPosts();
+    Optional<List<Posts>> getAllPosts();
 
     @GetMapping
     List<PostDTO> getAllCountriesByUserId(@RequestParam("userId") long id);
 
     @GetMapping(path = "/{postId}")
-    PostDTO getPostByPostId(@PathVariable("postId") long postId);
+    Optional<Posts> getPostId(@PathVariable("postId") long postId);
 
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     PostDTO create(PostDTO post);

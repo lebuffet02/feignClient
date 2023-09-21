@@ -1,7 +1,9 @@
 package br.com.open.api.open.external;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
 
+@Getter
 @JsonFormat(
         shape = JsonFormat.Shape.OBJECT
 )
@@ -22,11 +24,4 @@ public enum ResponseStatus {
         this.description = description;
     }
 
-    public Integer getStatus() {
-        return this.status;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
 }

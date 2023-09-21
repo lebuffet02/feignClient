@@ -1,0 +1,12 @@
+posts:
+  url: https://jsonplaceholder.typicode.com/posts
+
+
+comments:
+  url: https://jsonplaceholder.typicode.com/comments
+
+
+users:
+  url: https://jsonplaceholder.typicode.com/users
+
+

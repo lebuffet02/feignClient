@@ -1,7 +1,7 @@
 package br.com.open.api.open.controller;
 
 import br.com.open.api.open.DTO.CommentsDTO;
-import br.com.open.api.open.domain.Comments;
+import br.com.open.api.open.domain.comments.Comments;
 import br.com.open.api.open.external.ResponseExternal;
 import br.com.open.api.open.service.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class CommentsController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseExternal<Comments> getAllCommentsById(
+    public ResponseExternal<Optional<Comments>> getAllCommentsById(
             @PathVariable(name = "id") long id) {
         return new ResponseExternal<>(service.getAllCommentsById(id));
     }

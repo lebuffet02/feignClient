@@ -2,13 +2,12 @@ package br.com.open.api.open.service;
 
 import br.com.open.api.open.DTO.CommentsDTO;
 import br.com.open.api.open.client.CommentsClient;
-import br.com.open.api.open.domain.Comments;
+import br.com.open.api.open.domain.comments.Comments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CommentsService {
@@ -23,8 +22,15 @@ public class CommentsService {
         return Optional.empty();
     }
 
-    public Comments getAllCommentsById(long id) {
-        return commentsClient.getAllCommentsId(id);
+    public Optional<Comments> getAllCommentsById(long id) {
+        try {
+            if(commentsClient.getAllCommentsId(id).isPresent()) {
+                return Optional.of(commentsClient.getAllCommentsId(id).get());
+            }
+            return Optional.empty();
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
     }
 
     public Optional<Comments> create(CommentsDTO commentsDTO) {

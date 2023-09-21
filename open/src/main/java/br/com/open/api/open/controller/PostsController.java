@@ -2,7 +2,9 @@ package br.com.open.api.open.controller;
 
 import br.com.open.api.open.DTO.PostDTO;
 import br.com.open.api.open.client.PostsClient;
+import br.com.open.api.open.domain.Posts.Posts;
 import br.com.open.api.open.external.ResponseExternal;
+import br.com.open.api.open.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,27 +17,21 @@ public class PostsController {
 
     @Autowired
     PostsClient postsClient;
+    @Autowired
+    PostsService postsService;
 
-    @PostMapping
-    public PostDTO create(@RequestBody PostDTO postDTO) {
-        return postsClient.create(postDTO);
-    }
-
-    @GetMapping(path = "/all-posts")
-    public ResponseExternal<Optional<List<PostDTO>>> getAllPosts() {
-        if (postsClient.getAllPosts().isPresent()) {
-            return new ResponseExternal<>(Optional.of(postsClient.getAllPosts().get()));
-        }
-        return new ResponseExternal<>();
+    @GetMapping(path = "/all")
+    public ResponseExternal<Optional<List<Posts>>> getAllPosts() {
+            return new ResponseExternal<>(postsService.getAllPosts());
     }
 
     @GetMapping(path = "/{id}")
-    public PostDTO posts(@PathVariable("id") Integer id) {
-        return postsClient.getPostByPostId(id);
+    public ResponseExternal<Optional<Posts>> posts(@PathVariable("id") long id) {
+        return new ResponseExternal<>(postsService.getPostId(id));
     }
 
-    @GetMapping(path = "a/{id}")
-    public List<PostDTO> postsd(@PathVariable("id") long id) {
-        return postsClient.getAllCountriesByUserId(id);
-    }
+//    @PostMapping
+//    public PostDTO create(@RequestBody PostDTO postDTO) {
+//        return postsClient.create(postDTO);
+//    }
 }
