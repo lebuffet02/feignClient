@@ -36,3 +36,13 @@ eureka/.mvn/wrapper/maven-wrapper.properties
 eureka/target/server-0.0.1-SNAPSHOT.jar.original
 
 eureka/target/maven-archiver/pom.properties
+
+open/target/open-0.0.1-SNAPSHOT.jar.original
+
+open/target/surefire-reports/TEST-br.com.open.api.open.OpenApplicationTests.xml
+
+open/target/surefire-reports/br.com.open.api.open.OpenApplicationTests.txt
+
+*.lst
+
+open/target/maven-archiver/pom.properties

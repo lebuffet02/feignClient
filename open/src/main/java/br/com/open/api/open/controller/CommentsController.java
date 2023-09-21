@@ -5,8 +5,8 @@ import br.com.open.api.open.domain.comments.Comments;
 import br.com.open.api.open.external.ResponseExternal;
 import br.com.open.api.open.service.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +30,7 @@ public class CommentsController {
 
     @PostMapping(path = "/create")
     public ResponseExternal<Optional<Comments>> create(
-            @RequestBody CommentsDTO commentsDTO) {
+            @Validated @RequestBody CommentsDTO commentsDTO) {
         return new ResponseExternal<>(service.create(commentsDTO));
     }
 }

@@ -6,40 +6,41 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "postId",
         "id",
+        "userId",
         "title",
         "body"
 })
 public class Posts {
 
-    @JsonProperty("postId")
-    private int postId;
     @JsonProperty("id")
-    private int id;
+    private long id;
+
+    @JsonProperty("userId")
+    private long userId;
     @JsonProperty("title")
     private String title;
     @JsonProperty("body")
     private String body;
 
-    @JsonProperty("postId")
-    public int getPostId() {
-        return postId;
-    }
-
-    @JsonProperty("postId")
-    public void setPostId(int postId) {
-        this.postId = postId;
-    }
-
     @JsonProperty("id")
-    public int getId() {
+    public long getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    @JsonProperty("userId")
+    public long getUserId() {
+        return userId;
+    }
+
+    @JsonProperty("userId")
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     @JsonProperty("title")

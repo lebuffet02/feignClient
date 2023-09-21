@@ -36,7 +36,7 @@ public class CommentsService {
     public Optional<Comments> create(CommentsDTO commentsDTO) {
         if(!ObjectUtils.isEmpty(commentsDTO)) {
             Comments comments = new Comments();
-            comments.setPostId(commentsDTO.id());
+            comments.setPostId(commentsDTO.postId());
             comments.setName(commentsDTO.name());
             comments.setEmail(commentsDTO.email());
             comments.setBody(commentsDTO.body());

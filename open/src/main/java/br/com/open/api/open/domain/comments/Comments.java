@@ -7,14 +7,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "id",
+        "postId",
         "name",
         "email",
         "body"
 })
 public class Comments {
 
+    @JsonProperty("id")
+    private long id;
+
     @JsonProperty("postId")
-    private int postId;
+    private long postId;
     @JsonProperty("name")
     private String name;
     @JsonProperty("email")
@@ -25,13 +29,23 @@ public class Comments {
     public Comments() {}
 
     @JsonProperty("postId")
-    public int getPostId() {
+    public long getPostId() {
         return postId;
     }
 
     @JsonProperty("postId")
-    public void setPostId(int postId) {
+    public void setPostId(long postId) {
         this.postId = postId;
+    }
+
+    @JsonProperty("id")
+    public long getId() {
+        return id;
+    }
+
+    @JsonProperty("id")
+    public void setId(long id) {
+        this.id = id;
     }
 
     @JsonProperty("name")

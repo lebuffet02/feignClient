@@ -20,12 +20,12 @@ public interface PostsClient {
     Optional<List<Posts>> getAllPosts();
 
     @GetMapping
-    List<PostDTO> getAllCountriesByUserId(@RequestParam("userId") long id);
+    List<Posts> getAllCountriesByUserId(@RequestParam("userId") long id);
 
     @GetMapping(path = "/{postId}")
     Optional<Posts> getPostId(@PathVariable("postId") long postId);
 
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    PostDTO create(PostDTO post);
+    Optional<Posts> create(Posts post);
 }
 
